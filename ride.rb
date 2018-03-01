@@ -1,5 +1,5 @@
 class Ride
-  attr_reader :start_row, :start_column, :finish_row, :finish_column, :earlist_start, :latest_finish)
+  attr_reader :start_row, :start_column, :finish_row, :finish_column, :earlist_start, :latest_finish
 
   def initialize(start_row, start_column, finish_row, finish_column, earlist_start, latest_finish)
     @start_row = start_row
