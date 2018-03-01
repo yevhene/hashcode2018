@@ -12,10 +12,19 @@ class Car
   end
 
   def add_ride(ride)
-    @t += ride.earliest_start + ride.distance
+    @t = will_start_at(ride) + ride.distance
     @row = ride.finish_row
     @column = ride.finish_column
     @rides << ride
+  end
+
+  def will_start_at(ride)
+    will_be_at_start_point = @t + ride.distance_to_start(row, column)
+    if will_be_at_start_point < ride.earliest_start
+      ride.earliest_start
+    else
+      will_be_at_start_point
+    end
   end
 
   def can_ride?(ride)
