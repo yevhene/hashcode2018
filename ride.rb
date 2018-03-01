@@ -1,12 +1,13 @@
 class Ride
-  attr_reader :start_row, :start_column, :finish_row, :finish_column, :earlist_start, :latest_finish
+  attr_reader :index, :start_row, :start_column, :finish_row, :finish_column, :earliest_start, :latest_finish
 
-  def initialize(start_row, start_column, finish_row, finish_column, earlist_start, latest_finish, index)
+  def initialize(index, start_row, start_column, finish_row, finish_column, earliest_start, latest_finish)
+    @index = index
     @start_row = start_row
     @start_column = start_column
     @finish_row = finish_row
     @finish_column = finish_column
-    @earlist_start = earlist_start
+    @earliest_start = earliest_start
     @latest_finish = latest_finish
   end
 

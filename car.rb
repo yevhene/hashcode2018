@@ -14,7 +14,7 @@ class Car
   end
 
   def can_ride?(ride)
-    @rides.sum(&:distance) <= ride.earlist_start
+    @rides.sum(&:distance) <= ride.earliest_start
   end
 
   def result
