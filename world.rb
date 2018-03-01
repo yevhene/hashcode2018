@@ -24,6 +24,11 @@ class World
   end
 
   def find_car_for(ride)
-    @cars.detect { |car| car.can_ride? ride }
+    available_cars = @cars.select { |car| car.can_ride? ride }
+    find_nearest_car available_cars, ride
+  end
+
+  def find_nearest_car(cars, ride)
+    cars.sort_by { |car| ride.distance_from car.row, car.column }.first
   end
 end

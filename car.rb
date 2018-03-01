@@ -19,8 +19,11 @@ class Car
   end
 
   def can_ride?(ride)
-    delta_y = ride.distance_to_start(@row, @column) + ride.distance
-    @t + delta_y < ride.latest_finish
+    @t + ride.distance_from(row, column) < ride.latest_finish
+  end
+
+  def need_to_drive_to_start(ride)
+    ride.distance_to_start(@row, @column) + ride.distance
   end
 
   def result
