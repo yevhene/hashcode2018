@@ -16,4 +16,8 @@ class Car
   def can_ride?(ride)
     @rides.sum(&:distance) <= ride.earlist_start
   end
+
+  def result
+    [@rides.count, *@rides.map(&:index)]
+  end
 end
