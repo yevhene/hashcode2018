@@ -20,7 +20,7 @@ class World
   private
 
   def rides_sorted_by_earliest_start
-    @rides.sort_by { |ride| ride.earliest_start }
+    @rides.sort_by(&:latest_finish).sort_by(&:earliest_start)
   end
 
   def find_car_for(ride)
