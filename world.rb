@@ -11,6 +11,7 @@ class World
 
   def run
     rides_sorted_by_earliest_start.each do |ride|
+      next unless ride.valid?
       car = find_car_for ride
       car.add_ride ride
     end
