@@ -1,5 +1,6 @@
 require_relative './ride.rb'
 require_relative './world.rb'
+require_relative './car.rb'
 
 head_line = gets
 world = World.new(*head_line.split(' ').map(&:to_i))
