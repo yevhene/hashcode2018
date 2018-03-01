@@ -29,7 +29,7 @@ class Car
 
   def get_points(ride)
     return 0 unless can_ride? ride
-    bonus = @t + ride.distance_to_start(row, column) <= ride.earliest_start ? 2 : 0
+    bonus = @t + ride.distance_to_start(row, column) == ride.earliest_start ? 2 : 0
     ride.distance + bonus
   end
 
