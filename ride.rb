@@ -12,7 +12,7 @@ class Ride
   end
 
   def max_time
-    latest_finish - earlist_start
+    latest_finish - earliest_start
   end
 
   def distance
