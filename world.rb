@@ -28,8 +28,8 @@ class World
   private
 
   def find_best_ride_index_for(car)
-    min, index = @rides.map { |ride| car.will_finish_ride_at ride }.each_with_index.min
-    return nil if min == Integer::MAX
+    min, index = @rides.map { |ride| car.get_points ride }.each_with_index.max
+    return nil if min == Integer::MAX || min == 0
     index
   end
 end
