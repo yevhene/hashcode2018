@@ -9,7 +9,7 @@ class World
   attr_reader :cars
   def initialize(rows, columns, number_of_cars, rides, bonus, steps)
     @rides = []
-    @cars = (0...number_of_cars).map { |i| Car.new }
+    @cars = (0...number_of_cars).map { |i| Car.new(bonus) }
   end
 
   def add_ride(ride)
