@@ -22,8 +22,9 @@ class Car
     @t + ride.distance_from(row, column) < ride.latest_finish
   end
 
-  def need_to_drive_to_start(ride)
-    ride.distance_to_start(@row, @column) + ride.distance
+  def will_finish_ride_at(ride)
+    return Integer::MAX unless can_ride? ride
+    @t + ride.distance_from(@row, @column)
   end
 
   def result

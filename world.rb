@@ -1,3 +1,10 @@
+class Integer
+  N_BYTES = [42].pack('i').size
+  N_BITS = N_BYTES * 16
+  MAX = 2 ** (N_BITS - 2) - 1
+  MIN = -MAX - 1
+end
+
 class World
   attr_reader :cars
   def initialize(rows, columns, number_of_cars, rides, bonus, steps)
@@ -10,25 +17,19 @@ class World
   end
 
   def run
-    rides_sorted_by_earliest_start.each do |ride|
-      next unless ride.valid?
-      car = find_car_for ride
-      car.add_ride ride if car
+    @cars.each do |car|
+      while ride_index = find_best_ride_index_for(car) do
+        car.add_ride @rides[ride_index]
+        @rides.delete_at(ride_index)
+      end
     end
   end
 
   private
 
-  def rides_sorted_by_earliest_start
-    @rides.sort_by { |ride| ride.earliest_start + ride.distance }
-  end
-
-  def find_car_for(ride)
-    available_cars = @cars.select { |car| car.can_ride? ride }
-    find_nearest_car available_cars, ride
-  end
-
-  def find_nearest_car(cars, ride)
-    cars.sort_by { |car| ride.distance_from car.row, car.column }.first
+  def find_best_ride_index_for(car)
+    min, index = @rides.map { |ride| car.will_finish_ride_at ride }.each_with_index.min
+    return nil if min == Integer::MAX
+    index
   end
 end
