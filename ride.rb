@@ -15,6 +15,10 @@ class Ride
   end
 
   def distance
-    (start_row - finish_row).abs + (finish_row - finish_column).abs
+    (start_row - finish_row).abs + (start_column - finish_column).abs
+  end
+
+  def valid?
+    max_time > distance
   end
 end
