@@ -11,3 +11,7 @@ while ride_line = gets do
 end
 
 world.run
+
+world.cars.each do |car|
+  puts car.result.join(' ')
+end
